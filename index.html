@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación Curso HubSpot Marketing Hub</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: #f3f4f6; /* Light gray background */
+        }
+        /* Custom scrollbar for content area */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #e5e7eb;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #9ca3af;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #6b7280;
+        }
+    </style>
+</head>
+<body class="flex flex-col h-screen overflow-hidden">
+
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white p-4 shadow-lg">
+        <h1 class="text-3xl font-bold text-center rounded-lg py-2">Curso: Dominando HubSpot Marketing Hub</h1>
+    </header>
+
+    <!-- Main Content Area -->
+    <div class="flex flex-1 overflow-hidden flex-col md:flex-row">
+        <!-- Sidebar Navigation -->
+        <nav class="w-full md:w-1/4 bg-white p-4 shadow-lg overflow-y-auto custom-scrollbar flex-shrink-0">
+            <h2 class="text-xl font-semibold mb-4 text-gray-800">Módulos del Curso</h2>
+            <ul id="module-list" class="space-y-2">
+                <!-- Module titles will be injected here by JavaScript -->
+            </ul>
+        </nav>
+
+        <!-- Presentation Content -->
+        <main class="flex-1 p-6 overflow-y-auto custom-scrollbar bg-white m-4 md:m-8 rounded-lg shadow-xl">
+            <h2 id="content-title" class="text-3xl font-bold text-gray-900 mb-4 pb-2 border-b-2 border-blue-500"></h2>
+            <div id="content-body" class="prose max-w-none text-gray-700 leading-relaxed">
+                <!-- Content will be injected here by JavaScript -->
+            </div>
+            <!-- Navigation buttons -->
+            <div class="flex justify-between mt-8 pt-4 border-t border-gray-200">
+                <button id="prev-btn" class="bg-gray-300 text-gray-800 px-6 py-2 rounded-lg hover:bg-gray-400 transition duration-300 ease-in-out font-medium text-lg shadow-md disabled:opacity-50 disabled:cursor-not-allowed">
+                    Anterior
+                </button>
+                <button id="next-btn" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition duration-300 ease-in-out font-medium text-lg shadow-md disabled:opacity-50 disabled:cursor-not-allowed">
+                    Siguiente
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Data structure for the course content
+        const courseContent = [
+            {
+                title: "Módulo 1: Fundamentos de HubSpot y el Inbound Marketing",
+                sections: [
+                    {
+                        title: "1.1. ¿Qué es HubSpot y el Inbound Marketing?",
+                        content: `
+                            <p>Tradicionalmente, el marketing "interrumpía" a la gente con mensajes que no habían solicitado. El Inbound Marketing, por el contrario, busca <strong>atraer</strong> a los clientes al crear contenido y experiencias valiosas, adaptadas a sus necesidades.</p>
+                            <h3 class="text-xl font-semibold mb-2">Filosofía Inbound:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li><strong>Atraer:</strong> Convertir desconocidos en visitantes (contenido relevante, SEO, redes sociales).</li>
+                                <li><strong>Interactuar:</strong> Convertir visitantes en leads y luego en clientes (contenido de valor, personalización, chatbots).</li>
+                                <li><strong>Deleitar:</strong> Convertir clientes en promotores (servicio excepcional, soporte post-venta, feedback).</li>
+                            </ul>
+                            <h3 class="text-xl font-semibold mb-2 mt-4">Hubs de HubSpot:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li><strong>Marketing Hub:</strong> Atrae visitantes, convierte leads, gestiona campañas, analiza rendimiento.</li>
+                                <li><strong>Sales Hub:</strong> Gestiona contactos, seguimiento de negocios, automatiza tareas de ventas.</li>
+                                <li><strong>Service Hub:</strong> Gestiona tickets, bases de conocimiento, chats en vivo.</li>
+                                <li><strong>CMS Hub:</strong> Crea y aloja sitios web, blogs y landing pages.</li>
+                                <li><strong>Operations Hub:</strong> Sincroniza datos, automatiza procesos, limpia información del CRM.</li>
+                            </ul>
+                            <p class="mt-4">La belleza de HubSpot es que, al estar todos estos Hubs en una misma plataforma, los datos fluyen entre ellos de forma automática.</p>
+                        `
+                    },
+                    {
+                        title: "1.2. Conceptos Clave del CRM de HubSpot",
+                        content: `
+                            <p>El CRM (Customer Relationship Management) es el cerebro de HubSpot, donde reside toda la información de nuestros contactos.</p>
+                            <h3 class="text-xl font-semibold mb-2">Figuras Centrales:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li><strong>Contacto:</strong> Representa a una persona individual (suscriptor, lead, cliente).</li>
+                                <li><strong>Empresa:</strong> Almacena información sobre la compañía a la que pertenece un contacto (útil en B2B).</li>
+                                <li><strong>Negocio:</strong> Rastrea las oportunidades de venta a través de etapas.</li>
+                            </ul>
+                            <p class="mt-2"><strong>Importante:</strong> Estas tres figuras pueden y deben asociarse entre sí.</p>
+                            <h3 class="text-xl font-semibold mb-2 mt-4">Propiedades:</h3>
+                            <p>Son los campos donde almacenamos la información (ej: Nombre, Email, Industria). Pueden ser nativas de HubSpot o personalizadas. Cruciales para la segmentación.</p>
+                            <h3 class="text-xl font-semibold mb-2 mt-4">Vistas y Filtros:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li><strong>Vistas:</strong> Organizan registros con columnas específicas (ej: "Leads de marketing calificados").</li>
+                                <li><strong>Filtros:</strong> Segmentan registros en tiempo real (ej: "Contactos de Ciudad de México").</li>
+                            </ul>
+                            <h3 class="text-xl font-semibold mb-2 mt-4">Listas:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li><strong>Activas (Inteligentes):</strong> Se actualizan automáticamente (contactos entran/salen según criterios).</li>
+                                <li><strong>Estáticas:</strong> "Foto" de un grupo de contactos en un momento dado (no se actualizan).</li>
+                            </ul>
+                            <h3 class="text-xl font-semibold mb-2 mt-4">Creación y Carga de Contactos:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Creación manual uno por uno.</li>
+                                <li>Importación masiva mediante archivos CSV.</li>
+                            </ul>
+                        `
+                    },
+                    {
+                        title: "1.3. Configuración Inicial del Portal",
+                        content: `
+                            <p>Pasos esenciales para cada usuario al iniciar en HubSpot.</p>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li><strong>Configuración del perfil personal:</strong> Nombre, foto, zona horaria, firma de correo.</li>
+                                <li><strong>Conexión de bandeja de entrada y calendario:</strong> Envía/recibe correos, programa reuniones, registra actividad en CRM.</li>
+                                <li><strong>Instalación de la extensión de ventas:</strong> Ver info del contacto, usar plantillas sin salir del email.</li>
+                                <li><strong>Gestión de usuarios y permisos:</strong> Controlar quién tiene acceso y qué herramientas puede usar (tarea de administrador).</li>
+                            </ul>
+                        `
+                    }
+                ]
+            },
+            {
+                title: "Módulo 2: Atraer Visitas a tu Sitio Web",
+                sections: [
+                    {
+                        title: "2.1. Planificación de Campañas y Estrategia SEO",
+                        content: `
+                            <h3 class="text-xl font-semibold mb-2">Herramienta de Planificación:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Define proyectos, crea tareas, asigna responsables, establece fechas de entrega.</li>
+                                <li>Centraliza la planificación y da visibilidad al equipo.</li>
+                            </ul>
+                            <h3 class="text-xl font-semibold mb-2 mt-4">Campañas en HubSpot:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Etiquetas organizativas para agrupar y seguir el rendimiento de activos de marketing.</li>
+                                <li>Asocia blogs, emails, landing pages, CTAs, anuncios.</li>
+                                <li>Mide KPIs: contactos generados, negocios cerrados, ingresos influenciados.</li>
+                            </ul>
+                            <h3 class="text-xl font-semibold mb-2 mt-4">Estrategia SEO con Topic Clusters:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li><strong>SEO:</strong> Proceso para mejorar visibilidad en motores de búsqueda (Google).</li>
+                                <li><strong>Topic Clusters:</strong> Organiza contenido en:
+                                    <ul class="list-circle pl-5 space-y-1 mt-1">
+                                        <li><strong>Tema Pilar (Pillar Page):</strong> Página amplia, general, enlaza a subtemas.</li>
+                                        <li><strong>Subtemas (Cluster Content):</strong> Artículos específicos, profundizan, enlazan a Pillar Page.</li>
+                                    </ul>
+                                </li>
+                                <li>Crea contenido relevante y enlaza internamente para construir autoridad.</li>
+                            </ul>
+                        `
+                    },
+                    {
+                        title: "2.2. Gestión de Contenido en el Blog",
+                        content: `
+                            <h3 class="text-xl font-semibold mb-2">Blog de HubSpot:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Herramienta integrada para crear, publicar y optimizar artículos.</li>
+                                <li>Editor intuitivo "drag-and-drop", SEO integrado, posibilidad de migrar blogs existentes.</li>
+                            </ul>
+                            <h3 class="text-xl font-semibold mb-2 mt-4">Creación y Edición de Posts:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Navega a Marketing > Sitio web > Blog.</li>
+                                <li>Editor visual para contenido, imágenes, videos y formato.</li>
+                                <li>Configura autor, URL, meta descripción, etiquetas.</li>
+                                <li>Optimización SEO en tiempo real.</li>
+                            </ul>
+                            <h3 class="text-xl font-semibold mb-2 mt-4">Optimización SEO del Blog:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li><strong>URLs:</strong> Cortas, descriptivas, con palabra clave.</li>
+                                <li><strong>Alt-text:</strong> Describe imágenes con palabras clave (accesibilidad y SEO).</li>
+                                <li><strong>Meta descripción:</strong> Resumen atractivo (150-160 caracteres) para resultados de búsqueda.</li>
+                                <li><strong>Enlaces:</strong> Internos (a otros posts/páginas) y externos (a fuentes creíbles, abrir en nueva pestaña).</li>
+                            </ul>
+                            <h3 class="text-xl font-semibold mb-2 mt-4">Análisis del Rendimiento:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Informes detallados: visitas, contactos generados, tasa de rebote, tiempo en página.</li>
+                                <li>Identifica qué temas resuenan y optimiza tu estrategia de contenido.</li>
+                            </ul>
+                        `
+                    },
+                    {
+                        title: "2.3. Redes Sociales",
+                        content: `
+                            <h3 class="text-xl font-semibold mb-2">Conexión de Cuentas:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Vincula tus perfiles de Facebook (páginas), Instagram (negocio), LinkedIn (empresa) y Google.</li>
+                                <li>Navega a Marketing > Redes sociales.</li>
+                            </ul>
+                            <h3 class="text-xl font-semibold mb-2 mt-4">Creación y Programación de Publicaciones:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Redacta publicaciones para todas tus redes conectadas.</li>
+                                <li>Incluye imágenes, videos, enlaces (acortados y rastreados automáticamente).</li>
+                                <li>Publica de inmediato o programa para el futuro.</li>
+                            </ul>
+                            <h3 class="text-xl font-semibold mb-2 mt-4">Análisis de Resultados:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Panel de análisis: interacciones, clics, audiencia, sesiones web.</li>
+                                <li>Entiende qué contenido funciona mejor en cada plataforma.</li>
+                            </ul>
+                        `
+                    },
+                    {
+                        title: "2.4. Publicidad Digital (Ads)",
+                        content: `
+                            <h3 class="text-xl font-semibold mb-2">Conexión de Cuentas Publicitarias:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Vincula tus cuentas de Google Ads, Facebook Ads y LinkedIn Ads.</li>
+                                <li>Navega a Marketing > Anuncios.</li>
+                            </ul>
+                            <h3 class="text-xl font-semibold mb-2 mt-4">Píxeles y Sincronización de Leads:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Asegura que los píxeles de seguimiento estén instalados para conversiones.</li>
+                                <li>Los leads generados se sincronizan automáticamente con tu CRM de HubSpot.</li>
+                            </ul>
+                            <h3 class="text-xl font-semibold mb-2 mt-4">Audiencias de Remarketing:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Crea audiencias basadas en propiedades de contactos, actividad web o listas.</li>
+                                <li>Sincroniza con plataformas de anuncios para retargeting.</li>
+                            </ul>
+                            <h3 class="text-xl font-semibold mb-2 mt-4">Medición del ROI:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Atribuye ingresos y leads a tus campañas de anuncios.</li>
+                                <li>Entiende el retorno de la inversión para optimizar tu gasto.</li>
+                            </ul>
+                        `
+                    }
+                ]
+            },
+            {
+                title: "Módulo 3: Convertir Visitantes en Leads",
+                sections: [
+                    {
+                        title: "3.1. El Proceso de Conversión",
+                        content: `
+                            <p>Secuencia de pasos para guiar a un visitante a realizar una acción deseada (convertirse en lead).</p>
+                            <h3 class="text-xl font-semibold mb-2">Estructura Estándar:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li><strong>CTA (Call to Action):</strong> Invitación a la acción.</li>
+                                <li><strong>Formulario:</strong> Punto de recolección de información.</li>
+                                <li><strong>Landing Page:</strong> Página que presenta la oferta y aloja el formulario.</li>
+                                <li><strong>Thank You Page:</strong> Página de agradecimiento y entrega de la oferta.</li>
+                            </ul>
+                            <p class="mt-4">El flujo guía al visitante desde el interés inicial hasta la conversión en un lead.</p>
+                        `
+                    },
+                    {
+                        title: "3.2. Llamadas a la Acción (CTAs)",
+                        content: `
+                            <h3 class="text-xl font-semibold mb-2">¿Qué son y Dónde se Usan?</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Botones o enlaces que invitan al visitante a una acción específica.</li>
+                                <li>Se usan en blogs, landing pages, emails, páginas web, redes sociales.</li>
+                            </ul>
+                            <h3 class="text-xl font-semibold mb-2 mt-4">Tipos de CTAs:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li><strong>De Imagen:</strong> Gráfico o banner atractivo.</li>
+                                <li><strong>De Texto:</strong> Enlace de texto simple.</li>
+                            </ul>
+                            <p class="mt-2">Se crean en Marketing > Captación de leads > CTAs y se incrustan en las páginas o emails.</p>
+                            <h3 class="text-xl font-semibold mb-2 mt-4">Optimización:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li><strong>Multivariables (Pruebas A/B):</strong> Prueban diferentes versiones para ver cuál funciona mejor.</li>
+                                <li><strong>Inteligentes:</strong> Muestran un CTA diferente según el visitante (ubicación, lista, etc.).</li>
+                            </ul>
+                            <p class="mt-2">La **Tasa de Clics (CTR)** es clave para evaluar su efectividad.</p>
+                        `
+                    },
+                    {
+                        title: "3.3. Formularios",
+                        content: `
+                            <h3 class="text-xl font-semibold mb-2">Creación y Tipos:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Se crean en Marketing > Captación de leads > Formularios.</li>
+                                <li><strong>Regular:</strong> Estándar, incrustable.</li>
+                                <li><strong>Emergente (Pop-up):</strong> Aparece en pantalla (al cargar, salir, scroll).</li>
+                                <li><strong>No nativos de HubSpot:</strong> Integración para capturar envíos de formularios externos.</li>
+                            </ul>
+                            <h3 class="text-xl font-semibold mb-2 mt-4">Formularios Inteligentes:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li><strong>Progresivos:</strong> Muestran campos nuevos si el contacto ya ha proporcionado información anterior.</li>
+                                <li><strong>Dependientes (Lógica Condicional):</strong> Muestran/ocultan campos según respuestas previas del usuario.</li>
+                            </ul>
+                            <h3 class="text-xl font-semibold mb-2 mt-4">Buenas Prácticas:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Equilibrio entre datos solicitados y valor de la oferta.</li>
+                                <li>Claridad en los campos y propósito.</li>
+                            </ul>
+                        `
+                    },
+                    {
+                        title: "3.4. Landing Pages",
+                        content: `
+                            <h3 class="text-xl font-semibold mb-2">Creación y Propósito:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Página web diseñada con un único propósito: la conversión.</li>
+                                <li>Se crean en Marketing > Sitio web > Páginas de destino.</li>
+                                <li>Editor "drag-and-drop" intuitivo.</li>
+                            </ul>
+                            <h3 class="text-xl font-semibold mb-2 mt-4">Tipos de Landing Pages:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li><strong>Concisa:</strong> Corta, información clave "above the fold" (sin scroll).</li>
+                                <li><strong>Explicativa:</strong> Más extensa, para ofertas complejas, requiere scroll.</li>
+                            </ul>
+                            <h3 class="text-xl font-semibold mb-2 mt-4">Optimización:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li><strong>Pruebas A/B:</strong> Comparar dos versiones para ver cuál convierte mejor.</li>
+                                <li><strong>Dynamic Test:</strong> HubSpot optimiza automáticamente la versión que se muestra.</li>
+                                <li>Diseño atractivo, mensaje claro, sin distracciones, prominencia del formulario.</li>
+                            </ul>
+                            <p class="mt-2">Puedes adquirir plantillas prediseñadas en el Marketplace de HubSpot.</p>
+                        `
+                    },
+                    {
+                        title: "3.5. Design Manager (Introducción)",
+                        content: `
+                            <h3 class="text-xl font-semibold mb-2">Entendimiento Básico:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Entorno de desarrollo para diseñadores y desarrolladores.</li>
+                                <li>Gestiona temas, plantillas, módulos y archivos (CSS, JS) del portal.</li>
+                            </ul>
+                            <h3 class="text-xl font-semibold mb-2 mt-4">Creación y Modificación:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Crea plantillas (página, blog, email) con editor "drag-and-drop" o código (HTML + HubL).</li>
+                                <li>Crea módulos reutilizables (HTML, CSS, JS) para añadir funcionalidad avanzada.</li>
+                                <li>Gestiona imágenes, videos y documentos en el gestor de archivos.</li>
+                            </ul>
+                            <p class="mt-2">Es la base de la flexibilidad de diseño en HubSpot.</p>
+                        `
+                    }
+                ]
+            },
+            {
+                title: "Módulo 4: Nutrir y Automatizar Contactos",
+                sections: [
+                    {
+                        title: "4.1. Email Marketing",
+                        content: `
+                            <h3 class="text-xl font-semibold mb-2">Tipos de Correos Electrónicos:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li><strong>Normal (Regular):</strong> Envío único a una lista (boletines, eventos).</li>
+                                <li><strong>Automatizado:</strong> Parte de un workflow, se envía en respuesta a una acción (bienvenida, nutrición).</li>
+                                <li><strong>RSS:</strong> Envío periódico de los últimos artículos del blog a suscriptores.</li>
+                            </ul>
+                            <h3 class="text-xl font-semibold mb-2 mt-4">Creación y Personalización:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Editor "drag-and-drop" para diseñar emails profesionales.</li>
+                                <li><strong>Tokens de Personalización:</strong> Inserta automáticamente datos del contacto (ej: nombre).</li>
+                                <li><strong>Contenido Inteligente:</strong> Muestra bloques de contenido diferentes según el segmento.</li>
+                                <li>Utiliza **listas activas** para segmentar y enviar mensajes relevantes.</li>
+                            </ul>
+                            <h3 class="text-xl font-semibold mb-2 mt-4">Optimización y Análisis:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li><strong>Pruebas A/B:</strong> Optimiza líneas de asunto y contenido.</li>
+                                <li>Programa envíos.</li>
+                                <li>Analiza métricas: Tasa de Apertura, Tasa de Clics (CTR), rebotes, bajas.</li>
+                            </ul>
+                            <h3 class="text-xl font-semibold mb-2 mt-4">Mejores Prácticas:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Limpia listas de "rebote duro".</li>
+                                <li>Usa nomenclatura consistente.</li>
+                                <li>Asegura que sean responsivos (móvil).</li>
+                            </ul>
+                        `
+                    },
+                    {
+                        title: "4.2. Workflows (Automatización)",
+                        content: `
+                            <h3 class="text-xl font-semibold mb-2">¿Qué son y su Importancia?</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Secuencia automatizada de acciones que se activan por criterios de inscripción.</li>
+                                <li>Permiten escalar, personalizar, ahorrar tiempo y mejorar la eficiencia.</li>
+                            </ul>
+                            <h3 class="text-xl font-semibold mb-2 mt-4">Usos de Workflows:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li><strong>Procesos Internos:</strong> Ej: Rotación de leads entre asesores, asignación de tareas internas.</li>
+                                <li><strong>Procesos Externos (Nutrición):</strong> Ej: Túneles de contenido automático después de una descarga (secuencia de emails).</li>
+                            </ul>
+                            <h3 class="text-xl font-semibold mb-2 mt-4">Funcionalidades Adicionales:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Centraliza propiedades (actualiza información del contacto).</li>
+                                <li>Envía notificaciones internas al equipo.</li>
+                            </ul>
+                        `
+                    },
+                    {
+                        title: "4.3. Conversaciones (Chatbots y Bandeja de Entrada Compartida)",
+                        content: `
+                            <h3 class="text-xl font-semibold mb-2">Gestión de Comunicación:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Unifica chat en vivo, Messenger, formularios y bandejas de correo compartidas.</li>
+                                <li>Todo en una bandeja de entrada de conversaciones universal.</li>
+                            </ul>
+                            <h3 class="text-xl font-semibold mb-2 mt-4">Chatflows (Chatbots):</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Crea chatbots automatizados para tu sitio web o Facebook Messenger.</li>
+                                <li>Califican leads, responden preguntas frecuentes, reservan reuniones.</li>
+                                <li>Editor visual para definir flujos de conversación, preguntas, respuestas y acciones.</li>
+                            </ul>
+                            <h3 class="text-xl font-semibold mb-2 mt-4">Gestión de Equipos:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Asigna conversaciones a miembros específicos del equipo.</li>
+                                <li>Permite colaboración entre agentes.</li>
+                                <li>Configura horarios de disponibilidad para el chat en vivo.</li>
+                            </ul>
+                        `
+                    }
+                ]
+            },
+            {
+                title: "Módulo 5: Analizar y Optimizar el Rendimiento",
+                sections: [
+                    {
+                        title: "5.1. Marketing Analytics y Dashboards",
+                        content: `
+                            <h3 class="text-xl font-semibold mb-2">Marketing Analytics:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Métricas y datos para medir, rastrear y pronosticar el rendimiento.</li>
+                                <li>Crucial para decisiones informadas, optimización y demostración de ROI.</li>
+                            </ul>
+                            <h3 class="text-xl font-semibold mb-2 mt-4">Dashboards (Paneles de Control):</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Representación visual de métricas clave.</li>
+                                <li>Beneficios: visualización unificada, comparación de rendimiento, detección de oportunidades.</li>
+                                <li>Personaliza dashboards con widgets (gráficos y tablas).</li>
+                            </ul>
+                            <h3 class="text-xl font-semibold mb-2 mt-4">KPIs Esenciales:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li><strong>Atracción:</strong> Visitas, fuentes de tráfico.</li>
+                                <li><strong>Conversión:</strong> Leads generados, tasa de conversión, envíos de formularios.</li>
+                                <li><strong>Engagement:</strong> Tasa de apertura/clics de emails, interacciones en redes.</li>
+                                <li><strong>Ingresos/ROI:</strong> Negocios cerrados, ingresos atribuidos.</li>
+                            </ul>
+                        `
+                    },
+                    {
+                        title: "5.2. Informes de Atribución",
+                        content: `
+                            <p>Entender qué puntos de contacto contribuyeron a una conversión o negocio cerrado.</p>
+                            <h3 class="text-xl font-semibold mb-2">Modelos de Atribución de Ingresos:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li><strong>Primer toque:</strong> Todo el crédito al primer punto de contacto.</li>
+                                <li><strong>Último toque:</strong> Todo el crédito al último punto de contacto.</li>
+                                <li><strong>Lineal:</strong> Crédito distribuido equitativamente.</li>
+                                <li><strong>En forma de "U":</strong> Más crédito al primer y último toque.</li>
+                                <li><strong>En forma de "W":</strong> Crédito al primer, conversión de lead y conversión de cliente.</li>
+                            </ul>
+                            <p class="mt-2">Crucial para saber qué canales son realmente efectivos en generar ingresos.</p>
+                        `
+                    },
+                    {
+                        title: "5.3. Mejora Continua",
+                        content: `
+                            <p>El análisis no es el fin, sino el comienzo del ciclo de mejora.</p>
+                            <h3 class="text-xl font-semibold mb-2">Uso de Datos para Optimización:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Si un email tiene baja apertura, prueba líneas de asunto.</li>
+                                <li>Si una Landing Page tiene baja conversión, realiza pruebas A/B.</li>
+                                <li>Ajusta segmentación de anuncios si no generan leads calificados.</li>
+                                <li>Dirige presupuesto a canales con mayor ROI.</li>
+                            </ul>
+                            <h3 class="text-xl font-semibold mb-2 mt-4">Identificación de Oportunidades:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Replicar contenido que resuena.</li>
+                                <li>Desarrollar campañas para segmentos desatendidos.</li>
+                                <li>Optimizar cuellos de botella en workflows.</li>
+                            </ul>
+                        `
+                    }
+                ]
+            },
+            {
+                title: "Módulo 6: Integraciones y Buenas Prácticas",
+                sections: [
+                    {
+                        title: "6.1. Integraciones con otras Plataformas",
+                        content: `
+                            <h3 class="text-xl font-semibold mb-2">Sincronización con Salesforce (si aplica):</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Sincronización bidireccional de datos (contactos, empresas, negocios).</li>
+                                <li>Contexto completo para ventas, calificación de leads.</li>
+                            </ul>
+                            <h3 class="text-xl font-semibold mb-2 mt-4">Marketplace de Aplicaciones de HubSpot:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Más de 1,500 aplicaciones nativas (ecommerce, ERP, video, etc.).</li>
+                                <li>Amplía funcionalidad, centraliza datos, optimiza flujos de trabajo.</li>
+                            </ul>
+                        `
+                    },
+                    {
+                        title: "6.2. Estrategias de Uso Avanzado y Mejores Prácticas Generales",
+                        content: `
+                            <h3 class="text-xl font-semibold mb-2">Consejos para Maximizar el Uso:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Aprovecha la personalización (tokens, contenido/CTAs inteligentes).</li>
+                                <li>Realiza pruebas A/B constantemente.</li>
+                                <li>Automatiza todo lo posible con Workflows.</li>
+                                <li>Utiliza los informes para entender y guiar decisiones.</li>
+                                <li>Mantente actualizado con las nuevas funciones de HubSpot.</li>
+                            </ul>
+                            <h3 class="text-xl font-semibold mb-2 mt-4">Manejo de Contactos (Marketing vs. No Marketing):</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Clasifica correctamente para el límite de suscripción.</li>
+                                <li>Limpia listas de rebotes duros o sin engagement.</li>
+                            </ul>
+                            <h3 class="text-xl font-semibold mb-2 mt-4">Organización del Portal:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Establece nomenclaturas claras y consistentes para todos los activos.</li>
+                                <li>Usa carpetas para organizar por campaña, año o tipo.</li>
+                            </ul>
+                            <h3 class="text-xl font-semibold mb-2 mt-4">Seguridad y Privacidad de Datos:</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Asigna permisos adecuados a los usuarios.</li>
+                                <li>Cumple con regulaciones de privacidad (GDPR, CCPA).</li>
+                            </ul>
+                        `
+                    },
+                    {
+                        title: "6.3. Recursos Adicionales",
+                        content: `
+                            <p>El aprendizaje en HubSpot es continuo. Aquí hay algunos recursos que deben seguir utilizando:</p>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li><strong>HubSpot Academy:</strong> Cursos y certificaciones gratuitas.</li>
+                                <li><strong>Comunidad de HubSpot:</strong> Foro activo para preguntas y soluciones.</li>
+                                <li><strong>HubSpot User Groups (HUGs):</strong> Grupos de usuarios locales para networking y aprendizaje.</li>
+                                <li><strong>Webinars y Eventos de HubSpot:</strong> Presentaciones de nuevas funciones y estrategias.</li>
+                                <li><strong>Podcasts de HubSpot:</strong> Para mantenerse actualizados con tendencias de marketing y ventas.</li>
+                                <li><strong>Soporte y recursos de ayuda:</strong> Base de conocimientos y contacto directo con soporte técnico.</li>
+                            </ul>
+                        `
+                    }
+                ]
+            }
+        ];
+
+        let currentModuleIndex = 0;
+        let currentSectionIndex = 0;
+
+        const moduleList = document.getElementById('module-list');
+        const contentTitle = document.getElementById('content-title');
+        const contentBody = document.getElementById('content-body');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+
+        // Function to render the navigation sidebar
+        function renderSidebar() {
+            moduleList.innerHTML = '';
+            courseContent.forEach((module, moduleIdx) => {
+                const moduleItem = document.createElement('li');
+                const moduleTitle = document.createElement('button');
+                moduleTitle.className = `font-bold text-left w-full p-2 rounded-lg transition-all duration-300 ${moduleIdx === currentModuleIndex ? 'bg-blue-500 text-white shadow-md' : 'text-gray-700 hover:bg-gray-100'}`;
+                moduleTitle.textContent = module.title;
+                moduleTitle.onclick = () => {
+                    currentModuleIndex = moduleIdx;
+                    currentSectionIndex = 0;
+                    displayContent();
+                    renderSidebar(); // Re-render sidebar to highlight active module
+                };
+                moduleItem.appendChild(moduleTitle);
+
+                // Add sections as nested list items
+                const sectionList = document.createElement('ul');
+                sectionList.className = `ml-4 mt-1 space-y-1 ${moduleIdx === currentModuleIndex ? 'block' : 'hidden'}`;
+                module.sections.forEach((section, sectionIdx) => {
+                    const sectionItem = document.createElement('li');
+                    const sectionLink = document.createElement('button');
+                    sectionLink.className = `text-left w-full p-1 rounded-md transition-all duration-300 ${moduleIdx === currentModuleIndex && sectionIdx === currentSectionIndex ? 'bg-blue-100 text-blue-800 font-semibold' : 'text-gray-600 hover:bg-gray-50'}`;
+                    sectionLink.textContent = section.title;
+                    sectionLink.onclick = () => {
+                        currentModuleIndex = moduleIdx;
+                        currentSectionIndex = sectionIdx;
+                        displayContent();
+                        renderSidebar(); // Re-render sidebar to highlight active section
+                    };
+                    sectionItem.appendChild(sectionLink);
+                    sectionList.appendChild(sectionItem);
+                });
+                moduleItem.appendChild(sectionList);
+                moduleList.appendChild(moduleItem);
+            });
+        }
+
+        // Function to display the current module/section content
+        function displayContent() {
+            const currentModule = courseContent[currentModuleIndex];
+            const currentSection = currentModule.sections[currentSectionIndex];
+
+            contentTitle.textContent = currentSection.title;
+            contentBody.innerHTML = currentSection.content;
+
+            updateNavigationButtons();
+        }
+
+        // Function to update the state of navigation buttons
+        function updateNavigationButtons() {
+            // Check if it's the first section of the first module
+            const isFirst = currentModuleIndex === 0 && currentSectionIndex === 0;
+            // Check if it's the last section of the last module
+            const isLast = currentModuleIndex === courseContent.length - 1 &&
+                           currentSectionIndex === courseContent[currentModuleIndex].sections.length - 1;
+
+            prevBtn.disabled = isFirst;
+            nextBtn.disabled = isLast;
+        }
+
+        // Event listeners for navigation buttons
+        prevBtn.addEventListener('click', () => {
+            if (currentSectionIndex > 0) {
+                currentSectionIndex--;
+            } else if (currentModuleIndex > 0) {
+                currentModuleIndex--;
+                currentSectionIndex = courseContent[currentModuleIndex].sections.length - 1;
+            }
+            displayContent();
+            renderSidebar();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            const currentModule = courseContent[currentModuleIndex];
+            if (currentSectionIndex < currentModule.sections.length - 1) {
+                currentSectionIndex++;
+            } else if (currentModuleIndex < courseContent.length - 1) {
+                currentModuleIndex++;
+                currentSectionIndex = 0;
+            }
+            displayContent();
+            renderSidebar();
+        });
+
+        // Initial render
+        renderSidebar();
+        displayContent();
+    </script>
+</body>
+</html>
